@@ -10,9 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_12_114716) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_12_122835) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "animes", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.bigint "collection_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_animes_on_collection_id"
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_collections_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "body"
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "mangas", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.bigint "collection_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_mangas_on_collection_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "body"
+    t.bigint "user_id", null: false
+    t.bigint "anime_id", null: false
+    t.bigint "manga_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["anime_id"], name: "index_posts_on_anime_id"
+    t.index ["manga_id"], name: "index_posts_on_manga_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,4 +78,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_114716) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "animes", "collections"
+  add_foreign_key "collections", "users"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
+  add_foreign_key "mangas", "collections"
+  add_foreign_key "posts", "animes"
+  add_foreign_key "posts", "mangas"
+  add_foreign_key "posts", "users"
 end
