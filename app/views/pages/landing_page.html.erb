@@ -1,0 +1,20 @@
+<header>
+    <p>Link to my profile</p>
+    <p>link to manga</p>
+    <p>link to Anime</p>
+</header>
+
+<section>
+  <div>
+    <p>Anime list</p>
+  </div>
+
+  <div>
+    <%= link_to "Log-out", destroy_user_session_path, 
+      data: {
+        "turbo-method": :delete,
+        "turbo-confirm": "Log-out my account"
+      } 
+    %>
+  </div>
+</section>
