@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   get '/homepage', to: 'pages#homepage', as: 'homepage'
   get '/landing_page', to: 'pages#landing_page', as: 'landing_page'
-  get '/anime', to: 'pages#anime', as: 'anime'
+  ## anime routes
+  get '/index', to: "anime#index", as: 'all_anime'
+  get '/show/:id', to: "anime#show", as: 'show_anime'
+
   get '/manga', to: 'pages#manga', as: 'manga'
 end
