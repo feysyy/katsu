@@ -86,5 +86,3 @@ test:
 production:
   <<: *default
   database: katsu_production
-  username: katsu
-  password: <%= ENV["KATSU_DATABASE_PASSWORD"] %>
