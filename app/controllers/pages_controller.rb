@@ -4,4 +4,10 @@ class PagesController < ApplicationController
 
   def landing_page
   end
+
+  def anime
+  end
+
+  def manga
+  end
 end
