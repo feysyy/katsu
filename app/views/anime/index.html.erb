@@ -10,7 +10,7 @@
 </div>
 
 <div>
-  <% if %>
+  <% if @pagination[:current_page] > 1 %>
     <span> <%= link_to 'Back', { page: @pagination[:current_page] - 1 }  %> </span>
   <% end %>
 
