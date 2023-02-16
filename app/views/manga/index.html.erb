@@ -1,0 +1,28 @@
+<%= link_to 'Home', landing_page_path %>
+
+<h1>Manga list</h1>
+<div>
+  <% @manga.each do |manga| %>
+    <p> <%= manga['attributes']['titles']['en'] %> </p>
+    <p> <%= manga['attributes']['synopsis'] %> </p>
+    <%= link_to 'View', show_anime_path(manga['id']) %>
+  <% end %>
+</div>
+
+<div>
+  <% if @pagination[:current_page] > 1 %>
+    <span> <%= link_to 'Back', { page: @pagination[:current_page] - 1 }  %> </span>
+  <% end %>
+
+  <% 1.upto(@pagination[:total_page]) do |page|  %>
+    <% if page == @pagination[:current_page]  %>
+      <span> <%= page %> </span>
+    <% else %>
+      <span> <%= link_to page, {page: page} %> </span>
+    <% end %>
+  <% end %>
+
+  <% if @pagination[:current_page] < @pagination[:total_page] %>
+   <span> <%= link_to 'Next', { page: @pagination[:current_page] + 1 } %> </span>
+  <% end %>
+</div>

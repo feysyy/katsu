@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   get '/index', to: "anime#index", as: 'all_anime'
   get '/show/:id', to: "anime#show", as: 'show_anime'
 
-  get '/manga', to: 'pages#manga', as: 'manga'
+  get '/manga/index', to: 'manga#index', as: 'all_manga'
+
+  get '/show/:id', to: "manga#show", as:'show_manga'
 end
