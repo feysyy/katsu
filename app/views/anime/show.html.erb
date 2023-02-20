@@ -1,7 +1,8 @@
-<p> <%= @anime['attributes']['titles']['en'] %> </p>
+<h1> <%= @anime['attributes']['canonicalTitle'] %> </h1>
 <%= image_tag(@anime['attributes']['posterImage']['small']) %>
-<p> <%= @anime['attributes']['episodeCount'] %> </p>
-<p> <%= @anime['attributes']['status'] %> </p>
-<p> <%= @anime['attributes']['startDate'] %> </p>
+<p>Description: <%= @anime['attributes']['description'] %> </p>
+<p>Episodes: <%= @anime['attributes']['episodeCount'] %> </p>
+<p>Status: <%= @anime['attributes']['status'] %> </p>
+<p>Start Date <%= @anime['attributes']['startDate'] %> </p>
 
 <%= link_to 'Back', all_anime_path %>

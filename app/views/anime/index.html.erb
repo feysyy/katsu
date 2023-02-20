@@ -3,9 +3,9 @@
 <h1>Anime list</h1>
 <div>
   <% @anime.each do |anime| %>
-    <p> <%= anime['attributes']['titles']['en'] %> </p>
+    <p> <%= anime['attributes']['canonicalTitle'] %>: </p>
+    <%= link_to image_tag(anime['attributes']['posterImage']['tiny']), show_anime_path(anime['id']) %>
     <p> <%= anime['attributes']['synopsis'] %> </p>
-    <%= link_to 'View', show_anime_path(anime['id']) %>
   <% end %>
 </div>
 
