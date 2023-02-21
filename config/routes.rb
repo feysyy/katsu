@@ -13,8 +13,14 @@ Rails.application.routes.draw do
   get '/index', to: "anime#index", as: 'all_anime'
   get '/show/:id', to: "anime#show", as: 'show_anime'
 
+  
   get '/manga/index', to: 'manga#index', as: 'all_manga'
+  get '/manga/show/:id', to: "manga#show", as:'show_manga'
 
+  resources :collections do 
+    resources :anime, except: [:index, :show]
+  end
+  
   get '/show/:id', to: "manga#show", as:'show_manga'
 
   resources :collections do 
