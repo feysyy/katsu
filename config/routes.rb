@@ -16,4 +16,9 @@ Rails.application.routes.draw do
   get '/manga/index', to: 'manga#index', as: 'all_manga'
 
   get '/show/:id', to: "manga#show", as:'show_manga'
+
+  resources :collections do 
+    resources :anime, except: [:index, :show]
+  end
+
 end

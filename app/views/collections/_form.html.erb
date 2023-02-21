@@ -1,0 +1,17 @@
+<%= form_with model: @collection do |f| %>
+<div>
+  <%= f.label :name %>
+  <br>
+  <%= f.text_field :name %>
+</div>
+
+<div>
+  
+  <% if action_name == 'create' %>
+    <%= f.submit 'Create' %>
+  <% else %>
+    <%= f.submit 'Save' %>
+  <% end %>
+  
+</div>
+<% end %>

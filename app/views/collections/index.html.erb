@@ -1,0 +1,14 @@
+<section>
+  <%= link_to 'Home', landing_page_path %>
+  <h1>My Anime Collections</h1>
+  <%= link_to 'New Collection', new_collection_path %>
+
+  <% @collections.each do |c| %>
+    <p> 
+      <%= c.name %> 
+      <span>  
+        <%= link_to 'View', collection_path(c) %>
+      </span> 
+    </p>
+  <% end %>
+</section>
