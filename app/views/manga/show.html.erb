@@ -1,0 +1,14 @@
+<h1> <%= @manga['attributes']['canonicalTitle'] %> </h1>
+
+
+<%= image_tag(@manga['attributes']['posterImage']['original'], size:"284x402")%>
+
+<div>
+    <p> Description: <%= @manga['attributes']['description']%> </p>
+    <p> Chapters: <%= @manga['attributes']['chapterCount']%> </p>
+    <p> Volumes: <%= @manga['attributes']['volumeCount']%> </p>
+    <p> Status: <%= @manga['attributes']['status']%> </p>
+    <p> Start Date: <%= @manga['attributes']['startDate']%> </p>
+
+    <%= link_to 'Back', all_manga_path%>
+</div>

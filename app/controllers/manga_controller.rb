@@ -12,6 +12,7 @@ class MangaController < ApplicationController
     end
 
     def show
-
+        response = Kitsu::Api.fetch_manga_detail(params[:id])
+        @manga = response['data']
     end
 end

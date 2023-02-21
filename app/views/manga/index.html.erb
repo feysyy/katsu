@@ -1,11 +1,18 @@
 <%= link_to 'Home', landing_page_path %>
 
 <h1>Manga list</h1>
+
 <div>
   <% @manga.each do |manga| %>
-    <p> <%= manga['attributes']['titles']['en'] %> </p>
+    <p> <%= manga['attributes']['canonicalTitle'] %> </p>
+    <% if manga['attributes']['posterImage']['tiny'] %>
+        <%= link_to image_tag(manga['attributes']['posterImage']['tiny']), show_manga_path(manga['id']) %>
+    <% else %>
+        <h2>No Image Preview</h2>
+        <%= link_to 'View', show_manga_path(manga['id']) %>
+    <% end %>
+    <%# <%= link_to 'View', show_manga_path(manga['id']) %> 
     <p> <%= manga['attributes']['synopsis'] %> </p>
-    <%= link_to 'View', show_anime_path(manga['id']) %>
   <% end %>
 </div>
 
