@@ -12,12 +12,16 @@ Rails.application.routes.draw do
   ## anime routes
   get '/index', to: "anime#index", as: 'all_anime'
   get '/show/:id', to: "anime#show", as: 'show_anime'
+  get '/anime/:id/folders', to: "anime#anime_add_folder", as: 'add_anime_to_folder' 
 
-  
   get '/manga/index', to: 'manga#index', as: 'all_manga'
   get '/manga/show/:id', to: "manga#show", as:'show_manga'
+
+  get '/collection/:id/anime/:anime_id', to: 'collections#show_anime', as: 'collection_anime'
 
   resources :collections do 
     resources :anime, except: [:index, :show]
   end
+
+
 end
