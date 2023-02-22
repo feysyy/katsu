@@ -1,0 +1,7 @@
+<section>
+  <% @collections.each do |collection| %>
+    <p> <%= collection.name %> </p>
+    <%= button_to 'Add', collection_anime_index_path(collection.id, anime_id: @anime_id) %>
+  <% end %>
+
+</section>

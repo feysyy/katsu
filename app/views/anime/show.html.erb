@@ -4,5 +4,9 @@
 <p>Episodes: <%= @anime['attributes']['episodeCount'] %> </p>
 <p>Status: <%= @anime['attributes']['status'] %> </p>
 <p>Start Date <%= @anime['attributes']['startDate'] %> </p>
-
+<br>
+<br>
+<%= link_to 'Add to Collection', add_anime_to_folder_path(@anime['id'], anime_id: @anime['id']) %>
+<br>
+<br>
 <%= link_to 'Back', all_anime_path %>

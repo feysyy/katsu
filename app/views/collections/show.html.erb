@@ -1,10 +1,16 @@
 <section>
+  <%= link_to 'Back', collections_path %>
   <p>
     <%= @collection.name.titleize %> -
     <span>
-        <%= link_to 'Edit', edit_collection_path(@collection.id) %>
+        <%= link_to 'Edit Collection Name', edit_collection_path(@collection.id) %>
     </span> 
   </p>
-  <br>
-  <%= link_to 'Back', collections_path %>
+
+  <div>
+    <% @animes.each do |anime| %>
+      <p> <%= anime.title %> </p>
+      <%= link_to 'View', collection_anime_path(@collection.id, anime.id) %>
+    <% end %>
+  </div>
 </section>
