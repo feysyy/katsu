@@ -1,0 +1,10 @@
+<section>
+  <%= link_to 'Back', collection_path(@collection) %>
+  <br>
+  <h2> <%= @anime.title %> </h2>
+  <%= image_tag(@anime.poster) %>
+  <p>Description: <%= @anime.description %> </p>
+  <p>Episodes: <%= @anime.episodes %> </p>
+  <p>Status: <%= @anime.status %> </p>
+  <p>Start Date: <%= @anime.startDate %> </p>
+</section>
