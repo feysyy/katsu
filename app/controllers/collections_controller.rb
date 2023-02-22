@@ -1,11 +1,16 @@
 class CollectionsController < ApplicationController 
-  before_action :set_collection, only: [:show, :edit, :update, :destroy]
+  before_action :set_collection, only: [:show, :show_anime, :edit, :update, :destroy]
 
   def index
     @collections = Collection.where(user_id: current_user.id) if user_signed_in?
   end
 
   def show
+    @animes = @collection.anime.all
+  end
+
+  def show_anime
+    @anime = @collection.anime.find(params[:anime_id])
   end
 
   def new
