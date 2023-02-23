@@ -1,16 +1,19 @@
 <section>
   <%= link_to 'Back', collections_path %>
-  <p>
+  <h2>
     <%= @collection.name.titleize %> -
     <span>
         <%= link_to 'Edit Collection Name', edit_collection_path(@collection.id) %>
     </span> 
-  </p>
+  </h2>
 
   <div>
+  
     <% @animes.each do |anime| %>
-      <p> <%= anime.title %> </p>
-      <%= link_to 'View', collection_anime_path(@collection.id, anime.id) %>
+      <h3> <%= anime.title %>: </h3>
+      <%= link_to image_tag(anime.poster, size: "110x156" ), collection_anime_path(@collection.id, anime.id) %>
+
+
     <% end %>
   </div>
 </section>
