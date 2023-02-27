@@ -1,0 +1,11 @@
+<section>
+  <%= link_to 'Back', collection_path(@collection) %>
+  <br>
+  <h2> <%= @manga.title %> </h2>
+  <%= image_tag(@manga.poster) %>
+  <p>Description: <%= @manga.description %> </p>
+  <p>Chapters: <%= @manga.chapterCount %> </p>
+  <p>Volumes: <%= @manga.volumeCount %> </p>
+  <p>Status: <%= @manga.status %> </p>
+  <p>Start Date: <%= @manga.startDate %> </p>
+</section>

@@ -10,5 +10,7 @@
     <p> Status: <%= @manga['attributes']['status']%> </p>
     <p> Start Date: <%= @manga['attributes']['startDate']%> </p>
 
+    <%= link_to 'Add to Collection', add_manga_to_folder_path(@manga['id'], manga_id: @manga['id']) %>
+
     <%= link_to 'Back', all_manga_path%>
 </div>

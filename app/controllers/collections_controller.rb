@@ -1,5 +1,5 @@
 class CollectionsController < ApplicationController 
-  before_action :set_collection, only: [:show, :show_anime, :edit, :update, :destroy]
+  before_action :set_collection, only: [:show, :show_anime, :show_manga, :edit, :update, :destroy]
 
   def index
     @collections = Collection.where(user_id: current_user.id) if user_signed_in?
@@ -7,10 +7,15 @@ class CollectionsController < ApplicationController
 
   def show
     @animes = @collection.anime.all
+    @mangas = @collection.manga.all
   end
 
   def show_anime
     @anime = @collection.anime.find(params[:anime_id])
+  end
+
+  def show_manga
+    @manga = @collection.manga.find(params[:manga_id])
   end
 
   def new
