@@ -21,7 +21,7 @@ class MangaController < ApplicationController
 
     def create
         
-        manga = @collection.manga.create.(manga_id: params[:manga_id])
+        manga = @collection.manga.create(manga_id: params[:manga_id])
 
         if manga.save
             redirect_to landing_page_path

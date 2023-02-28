@@ -15,5 +15,10 @@
 
 
     <% end %>
+
+    <%@mangas.each do |manga|%>
+      <h3><%= manga.title %> <h3>
+      <%= link_to image_tag(manga.poster, size: "110x156"), collection_manga_path(@collection.id, manga.id)%>
+    <% end %>
   </div>
 </section>

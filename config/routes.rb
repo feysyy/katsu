@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get '/manga/:id/folders', to: "manga#manga_add_to_folder", as: 'add_manga_to_folder'
   
   get '/collection/:id/anime/:anime_id', to: 'collections#show_anime', as: 'collection_anime'
-  get '/collection/:id/manga/:manga_id', to: 'collection#show_manga', as: 'collection_manga'
+  get '/collection/:id/manga/:manga_id', to: 'collections#show_manga', as: 'collection_manga'
   resources :collections do 
     resources :anime, :manga, except: [:index, :show]
   end
