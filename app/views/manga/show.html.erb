@@ -1,5 +1,6 @@
-<h1> <%= @manga['attributes']['canonicalTitle'] %> </h1>
+ <%= link_to 'Back', all_manga_path%>
 
+<h1> <%= @manga['attributes']['canonicalTitle'] %> </h1>
 
 <%= image_tag(@manga['attributes']['posterImage']['original'], size:"284x402")%>
 
@@ -9,8 +10,28 @@
     <p> Volumes: <%= @manga['attributes']['volumeCount']%> </p>
     <p> Status: <%= @manga['attributes']['status']%> </p>
     <p> Start Date: <%= @manga['attributes']['startDate']%> </p>
-
     <%= link_to 'Add to Collection', add_manga_to_folder_path(@manga['id'], manga_id: @manga['id']) %>
-
-    <%= link_to 'Back', all_manga_path%>
 </div>
+
+<section>
+    <%= form_with model: @post do |f| %>
+        <%= f.hidden_field :content_id, value: @manga['id'] %>
+        <%= f.hidden_field :content_type, value: "manga" %>
+
+        <div>
+            <p>Write a comment:  </p>
+            <%= f.text_area :body, size: "120x5" %>
+        </div>
+
+        <div>
+            <%= f.submit 'submit' %>
+        </div>
+    <% end %>
+</section>
+
+<section>
+  <p>Comment(s): <%= @posts.count %>  </p>
+  <% @posts.each do |post| %>
+    <p> <%= post.user.email %>: <%= post.body %> </p>
+  <% end %>
+</section>

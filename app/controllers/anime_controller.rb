@@ -17,8 +17,7 @@ class AnimeController < ApplicationController
     response = Kitsu::Api.fetch_single_anime(params[:id])
     @anime = response['data']
     @post = Post.new
-    @anime_id = params[:id]
-    @posts = Post.order(created_at: :DESC).where(anime_id: params[:id])
+    @posts = Post.order(created_at: :DESC).where(content_id: params[:id], content_type: "anime")
   end
 
   def create
@@ -40,6 +39,5 @@ class AnimeController < ApplicationController
 
   def get_collection
     @collection = Collection.find(params[:collection_id])
-    
   end
 end
