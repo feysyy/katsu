@@ -12,7 +12,9 @@
 <br>
 <section>
   <%= form_with model: @post do |f| %>
-    <%= f.hidden_field :anime_id, value: @anime['id'] %>
+    <%= f.hidden_field :content_id, value: @anime['id'] %>
+    <%= f.hidden_field :content_type, value: "anime" %>
+
     <div>
       <p>Write a comment:  </p>
       <%= f.text_area :body, size: "120x5" %>

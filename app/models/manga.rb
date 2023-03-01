@@ -1,6 +1,5 @@
 class Manga < ApplicationRecord
   belongs_to :collection
-  has_many :posts
 
   before_commit :save_manga_details, on: [:create]
 
@@ -18,5 +17,4 @@ class Manga < ApplicationRecord
     self.status = manga["attributes"]['status']
     self.startDate = manga["attributes"]['startDate']
   end
-    
 end
