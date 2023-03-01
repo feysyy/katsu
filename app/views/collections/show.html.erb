@@ -8,12 +8,9 @@
   </h2>
 
   <div>
-  
     <% @animes.each do |anime| %>
       <h3> <%= anime.title %>: </h3>
       <%= link_to image_tag(anime.poster, size: "110x156" ), collection_anime_path(@collection.id, anime.id) %>
-
-
     <% end %>
 
     <%@mangas.each do |manga|%>
