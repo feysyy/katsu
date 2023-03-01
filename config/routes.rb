@@ -24,5 +24,7 @@ Rails.application.routes.draw do
     resources :anime, :manga, except: [:index, :show]
   end
 
+  resources :posts, only: [:create]
+
 
 end

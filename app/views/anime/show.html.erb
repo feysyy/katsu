@@ -1,12 +1,32 @@
-<h1> <%= @anime['attributes']['canonicalTitle'] %> </h1>
-<%= image_tag(@anime['attributes']['posterImage']['small']) %>
-<p>Description: <%= @anime['attributes']['description'] %> </p>
-<p>Episodes: <%= @anime['attributes']['episodeCount'] %> </p>
-<p>Status: <%= @anime['attributes']['status'] %> </p>
-<p>Start Date <%= @anime['attributes']['startDate'] %> </p>
-<br>
-<br>
-<%= link_to 'Add to Collection', add_anime_to_folder_path(@anime['id'], anime_id: @anime['id']) %>
-<br>
-<br>
 <%= link_to 'Back', all_anime_path %>
+
+<section>
+  <h1> <%= @anime['attributes']['canonicalTitle'] %> </h1>
+  <%= image_tag(@anime['attributes']['posterImage']['small']) %>
+  <p>Description: <%= @anime['attributes']['description'] %> </p>
+  <p>Episodes: <%= @anime['attributes']['episodeCount'] %> </p>
+  <p>Status: <%= @anime['attributes']['status'] %> </p>
+  <p>Start Date <%= @anime['attributes']['startDate'] %> </p>
+  <%= link_to 'Add to Collection', add_anime_to_folder_path(@anime['id'], anime_id: @anime['id']) %>
+</section>
+<br>
+<section>
+  <%= form_with model: @post do |f| %>
+    <%= f.hidden_field :anime_id, value: @anime['id'] %>
+    <div>
+      <p>Write a comment:  </p>
+      <%= f.text_area :body, size: "120x5" %>
+    </div>
+
+    <div>
+      <%= f.submit 'submit' %>
+    </div>
+  <% end %>
+</section>
+
+<section>
+  <p>Comment(s): <%= @posts.count %>  </p>
+  <% @posts.each do |post| %>
+    <p> <%= post.user.email %>: <%= post.body %> </p>
+  <% end %>
+</section>
