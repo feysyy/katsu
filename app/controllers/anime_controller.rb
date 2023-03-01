@@ -16,16 +16,12 @@ class AnimeController < ApplicationController
   def show
     response = Kitsu::Api.fetch_single_anime(params[:id])
     @anime = response['data']
+    @post = Post.new
+    @anime_id = params[:id]
+    @posts = Post.order(created_at: :DESC).where(anime_id: params[:id])
   end
 
   def create
-    # anime = @collection.anime.create(anime_params)
-
-    # if anime.save
-    #   redirect_to landing_page_path 
-    # else
-    #   redirect_to show_anime_path(anime['id'])
-    # end
     anime = @collection.anime.create(anime_id: params[:anime_id])
 
     if anime.save
@@ -46,9 +42,4 @@ class AnimeController < ApplicationController
     @collection = Collection.find(params[:collection_id])
     
   end
-
-  # def anime_params
-  #   params.permit(:url)
-  # end
-
 end
