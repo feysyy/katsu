@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Manga, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "belongs to collection" do
+    expect(described_class.reflect_on_association(:collection).macro).to eq(:belongs_to)
+  end
 end
