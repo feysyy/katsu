@@ -1,10 +1,14 @@
-<section>
-  <h1>Welcome to katsu anime and manga.....</h1>
-  <div>
-    <%= link_to 'Log-in', new_user_session_path %>
-  </div>
-  <div>
+<section class="flex flex-col relative bg-slate-600 max-h-full min-h-screen text-white">
+
+ <div class="flex flex-col justify-center border border-white w-[400px] h-[400px] mt-[250px] justify-center mx-auto px-[15px] rounded-[15px]">
+ 
+ <h1 class="text-[72px] mx-auto">KATSU</h1>
+ <span class="self-center">Anime and Manga Database</span>
+  <div class="flex flex-row mt-[10px] justify-around mx-[50px]">
+    <%= link_to 'Log-in', new_user_session_path %> |
     <%= link_to 'Sign-up', new_user_registration_path %>
   </div>
+
+ </div>
 
 </section>

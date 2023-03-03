@@ -16,7 +16,7 @@ module Kitsu
     end
 
     def self.fetch_manga(page = 1)
-      response = Faraday.get("#{BASE_URL}/manga?page[limit]=10&page[offset]=#{(page-1) * 10}",HEADERS)
+      response = Faraday.get("#{BASE_URL}/manga?page[limit]=20&page[offset]=#{(page-1) * 20}",HEADERS)
       JSON.parse(response.body)
     end
 

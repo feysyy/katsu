@@ -1,35 +1,77 @@
-<%= link_to 'Home', landing_page_path %>
+<div  class="relative" >
+    <div class="relative bg-slate-600 text-white py-10 ">
+      <div class="ml-10 gap-x-3 flex flex-row">
+        <%= link_to 'Home', landing_page_path %>
+        <h1>Manga list</h1>
+      </div>
+    </div>
+<div class="border border-black ">
 
-<h1>Manga list</h1>
-
-<div>
-  <% @manga.each do |manga| %>
-    <p> <%= manga['attributes']['canonicalTitle'] %> </p>
-    <% if manga['attributes']['posterImage']['tiny'] %>
-        <%= link_to image_tag(manga['attributes']['posterImage']['tiny']), show_manga_path(manga['id']) %>
-    <% else %>
-        <h2>No Image Preview</h2>
-        <%= link_to 'View', show_manga_path(manga['id']) %>
-    <% end %>
-    <%# <%= link_to 'View', show_manga_path(manga['id']) %> 
-    <p> <%= manga['attributes']['synopsis'] %> </p>
-  <% end %>
+  <div class="mt-5 mx-5">
+      <div class="grid grid-cols-4 grid-rows-5 gap-x-3 gap-y-3">
+        <% @manga.each do |manga| %>
+        <div class="border border-black h-[400px] w-[450px]">
+        
+          <% if manga['attributes']['posterImage']['tiny'] %>
+                <%= link_to image_tag(manga['attributes']['posterImage']['tiny']), show_manga_path(manga['id']) %>
+            <% else %>
+                <h2>No Image Preview</h2>
+                <%= link_to 'View', show_manga_path(manga['id']) %>
+            <% end %>
+            <p> <%= manga['attributes']['canonicalTitle'] %> </p>
+            <%# <%= link_to 'View', show_manga_path(manga['id']) %> 
+            <div class=" block h-1/2 text-ellipsis overflow-hidden">
+                  <p class=""> <%= manga['attributes']['synopsis'] %> </p>
+            </div>
+               
+        </div>
+        <% end %>
+        
+      
+      </div>
+            
+   
+  
+  </div>
 </div>
+<div class="flex border border-black ">
+<div class= "mx-auto flex self-center gap-x-5 py-4">
+    <% if @pagination[:current_page] > 1 %>
+    <span> <%= link_to 'Jump to first', { page: 1 }  %> </span>
+  <% end %>
 
-<div>
+   <% if @pagination[:current_page] > 10 %>
+    <span> <%= link_to '<<', { page:@pagination[:current_page] - 10 }  %> </span>
+  <% end %>
+
   <% if @pagination[:current_page] > 1 %>
     <span> <%= link_to 'Back', { page: @pagination[:current_page] - 1 }  %> </span>
   <% end %>
 
-  <% 1.upto(@pagination[:total_page]) do |page|  %>
-    <% if page == @pagination[:current_page]  %>
-      <span> <%= page %> </span>
+  <% (@pagination[:current_page]...@pagination[:total_page]).take(10).each do |index|  %>
+
+    <% if index == @pagination[:current_page]  %>
+      <span class="bg-slate-600 text-white self-center"> <%= index %> </span>
     <% else %>
-      <span> <%= link_to page, {page: page} %> </span>
+      <span> <%= link_to index, {page: index} %> </span>
     <% end %>
   <% end %>
 
   <% if @pagination[:current_page] < @pagination[:total_page] %>
    <span> <%= link_to 'Next', { page: @pagination[:current_page] + 1 } %> </span>
   <% end %>
+
+  
+
+   <% if @pagination[:current_page] < @pagination[:total_page] %>
+    <span> <%= link_to '>>', { page:@pagination[:current_page] + 10 }  %> </span>
+  <% end %>
+
+  <% if @pagination[:current_page] < @pagination[:total_page] %>
+    <span> <%= link_to 'Jump to Last', { page: @pagination[:total_page] }  %> </span>
+  <% end %>
 </div>
+
+</div>
+</div>
+
