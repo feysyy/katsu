@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+
+  it "has many collections" do
+    expect(described_class.reflect_on_association(:collections).macro).to eq(:has_many)
+  end
+
+  it "has many posts" do
+    expect(described_class.reflect_on_association(:posts).macro).to eq(:has_many)
+  end
 end

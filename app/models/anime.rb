@@ -1,6 +1,5 @@
 class Anime < ApplicationRecord
   belongs_to :collection
-  has_many :posts
 
   before_commit :save_kitsu_details, on: [:create]
 
@@ -17,8 +16,4 @@ class Anime < ApplicationRecord
     self.startDate = anime['attributes']['startDate']
     self.url = "https://www.youtube.com/watch?v=#{anime['attributes']['youtubeVideoId']}"
   end
-
-  # def kitsu_api
-  #   Kitsu::Api.fetch_single_anime.find(params[anime['id']])
-  # end
 end

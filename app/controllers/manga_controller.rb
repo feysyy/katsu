@@ -1,7 +1,6 @@
 class MangaController < ApplicationController
     before_action :get_collection, except: [:index, :show, :manga_add_to_folder]
 
-
     def index
         page = (params[:page] || 1).to_i
         response = Kitsu::Api.fetch_manga(page)
@@ -11,12 +10,14 @@ class MangaController < ApplicationController
             current_page: page,
             per_page: 20,
             total_page: (response['meta']['count'].to_f / 20 ).ceil
-          }
+        }
     end
 
     def show
         response = Kitsu::Api.fetch_manga_detail(params[:id])
         @manga = response['data']
+        @post = Post.new
+        @posts = Post.order(created_at: :DESC).where(content_id: params[:id], content_type: "manga")
     end
 
     def create
