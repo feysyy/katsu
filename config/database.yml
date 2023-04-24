@@ -86,3 +86,4 @@ test:
 production:
   <<: *default
   database: katsu_production
+  url: <%= ENV['DATABASE_URL'] %>
